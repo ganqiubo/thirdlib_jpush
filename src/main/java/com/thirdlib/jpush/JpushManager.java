@@ -8,7 +8,9 @@ import android.util.Log;
 import java.lang.ref.WeakReference;
 import java.util.Set;
 
+import cn.jpush.android.api.CustomMessage;
 import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.NotificationMessage;
 import cn.jpush.android.api.TagAliasCallback;
 
 public class JpushManager {
@@ -16,6 +18,7 @@ public class JpushManager {
     private static final String TAG = JpushManager.class.getSimpleName();
     private Context applicationContext;
     private static volatile JpushManager instance = null;
+    private JpushMessageListener jpushMessageListener;
 
     public static JpushManager getInstance() {
         if (instance == null){
@@ -96,4 +99,11 @@ public class JpushManager {
         }
     };
 
+    public JpushMessageListener getJpushMessageListener() {
+        return jpushMessageListener;
+    }
+
+    public void setJpushMessageListener(JpushMessageListener jpushMessageListener) {
+        this.jpushMessageListener = jpushMessageListener;
+    }
 }
